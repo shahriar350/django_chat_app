@@ -1,0 +1,48 @@
+{% extends 'master.html' %}
+
+{% block head %}
+    <title>Chat app</title>
+    <style>
+        ul li {
+            list-style: none;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <h5>Hello, {{ request.user.username }}</h5>
+        </div>
+        <div class="row vh-100">
+            <div class="col-2">
+                <div class="list-group">
+                    {% for user in users %}
+                        <a href="{% url 'message' user.room %}" type="button"
+                           class="list-group-item list-group-item-action" aria-current="true">
+                            {{ user.name | capfirst }}
+                        </a>
+                    {% endfor %}
+
+                </div>
+            </div>
+            <div class="col-10">
+                <div class="d-flex flex-column vh-100 justify-content-between">
+                    <div>
+                        hello
+                    </div>
+                    <div class="py-2">
+                        <label for="text" class="d-none"></label>
+                        <input type="text" id="text" placeholder="Text something..." class="form-control">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script>
+        console.log('hello world')
+    </script>
+{% endblock %}
